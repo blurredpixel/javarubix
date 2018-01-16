@@ -5,6 +5,8 @@
  */
 package rubixsolver;
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Hashtable;
 /**
  *
  * @author friesdj
@@ -14,11 +16,14 @@ public class Side {
     private int[]row1;
     private int[]row2;
     private int[]row3;
+    private Hashtable<String, Integer> colorCodes;
+        
     
   public Side(){
-      row1 = new int[9];
-      row2 = new int[9];
-      row3 = new int[9];
+      row1 = new int[3];
+      row2 = new int[3];
+      row3 = new int[3];
+      this.colorCodes= new Hashtable<String,Integer>();
       
   }  
     
@@ -60,7 +65,10 @@ public class Side {
         
     }
     
-    public void printSides(){
+    public void evalColors(int[] row){
+        
+        
+        
         int redCount=0;
         int blueCount =0;
         int greenCount = 0;
@@ -69,9 +77,8 @@ public class Side {
         int whiteCount =0;
         
         int i;
-        for(i=0;i<row1.length;i++){
-            System.out.println("Side1: "+row1[i]);
-            switch(row1[i]){
+        for(i=0;i<3;i++){
+            switch(row[i]){
                 case 1: redCount++;
                 case 2: blueCount++;
                 case 3: greenCount++;
@@ -80,63 +87,44 @@ public class Side {
                 case 6: whiteCount++;
             }
             
-            
-            
         }
-        System.out.println("Red: "+ redCount);
-            System.out.println("Blue: "+ blueCount);
-            System.out.println("Green: "+ greenCount);
-            System.out.println("Yellow: "+ yellowCount);
-            System.out.println("Orange: "+ orangeCount);
-            System.out.println("White: "+ whiteCount);
-            
-        for(i=0;i<row2.length;i++){
-            System.out.println("Side2: "+row2[i]);
-            switch(row2[i]){
-                case 1: redCount++;
-                case 2: blueCount++;
-                case 3: greenCount++;
-                case 4: yellowCount++;
-                case 5: orangeCount++;
-                case 6: whiteCount++;
-            }
-            
-            
-            
-        }
+        colorCodes.put("Red", redCount);
+        colorCodes.put("Blue", blueCount);
+        colorCodes.put("Green", greenCount);
+        colorCodes.put("Yellow", yellowCount);
+        colorCodes.put("Orange", orangeCount);
+        colorCodes.put("White", whiteCount);
         
-        System.out.println("Red: "+ redCount);
-            System.out.println("Blue: "+ blueCount);
-            System.out.println("Green: "+ greenCount);
-            System.out.println("Yellow: "+ yellowCount);
-            System.out.println("Orange: "+ orangeCount);
-            System.out.println("White: "+ whiteCount);
-            
-        for(i=0;i<row3.length;i++){
-            System.out.println("Side3: "+row3[i]);
-            switch(row3[i]){
-                case 1: redCount++;
-                case 2: blueCount++;
-                case 3: greenCount++;
-                case 4: yellowCount++;
-                case 5: orangeCount++;
-                case 6: whiteCount++;
-            }
-            
-            
-        }
         
-            System.out.println("Red: "+ redCount);
-            System.out.println("Blue: "+ blueCount);
-            System.out.println("Green: "+ greenCount);
-            System.out.println("Yellow: "+ yellowCount);
-            System.out.println("Orange: "+ orangeCount);
-            System.out.println("White: "+ whiteCount);
+        
         
         
     }
     
     
-    
+    public void printSides(){
+        this.evalColors(row1);
+        this.evalColors(row2);
+        this.evalColors(row3);
+        Integer red = colorCodes.get("Red");
+        Integer blue = colorCodes.get("Blue");
+        Integer green = colorCodes.get("Green");
+        Integer yellow = colorCodes.get("Yellow");
+        Integer orange = colorCodes.get("Orange");
+        Integer white = colorCodes.get("White");
+        
+        System.out.println("Red: "+red);
+        System.out.println("Blue: "+blue);
+        System.out.println("Green: "+green);
+        System.out.println("Yellow: "+yellow);
+        System.out.println("Orange: "+orange);
+        System.out.println("White: "+white);
+        
     
 }
+
+
+
+
+
+}//end of class

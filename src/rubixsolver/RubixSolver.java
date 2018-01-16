@@ -18,11 +18,25 @@ public class RubixSolver {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        int sidenum=0;
+        ArrayList<Side> sides = new ArrayList<>();
+        do{
+            Side side = new Side();
+            sides.add(side);
+            System.out.println(sidenum);
+            sidenum++;
+            
+        }while(sidenum<9);
         
-        Side sides = new Side();
         
-        sides.generateSides();
-        sides.printSides();
+        
+        for(Side s: sides){
+            s.generateSides();
+            s.printSides();
+            
+            
+        }
+        
     }
 }    
 
